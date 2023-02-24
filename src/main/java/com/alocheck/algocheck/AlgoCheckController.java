@@ -1,8 +1,6 @@
 package com.alocheck.algocheck;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AlgoCheckController {
@@ -12,8 +10,8 @@ public class AlgoCheckController {
         this.algoCheck = algoCheck;
     }
 
-    @GetMapping("/api/algoCheck")
-    String checkForAlogorithmicTimeComplexity(@RequestParam String s) {
+    @PostMapping("/api/algoCheck")
+    String checkForAlogorithmicTimeComplexity(@RequestBody String s) {
         return algoCheck.checkAlogirithTimeComplexity(s);
     }
 }
