@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class AlgocheckApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AlgocheckApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AlgocheckApplication.class, args);
+    }
 
 }
