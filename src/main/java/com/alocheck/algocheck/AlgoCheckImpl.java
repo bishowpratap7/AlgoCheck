@@ -12,4 +12,19 @@ public class AlgoCheckImpl implements AlgoCheck {
         }
         return "Need More Information";
     }
+
+    String checkOof1(String s) {
+        return "Need More Information";
+
+    }
+
+    String checkOofN(String s) {
+        return "Need More Information";
+
+    }
+
+    String checkOofNSquare(String s) {
+        return "Need More Information";
+
+    }
 }
