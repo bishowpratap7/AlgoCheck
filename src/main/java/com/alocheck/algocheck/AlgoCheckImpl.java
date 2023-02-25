@@ -27,4 +27,23 @@ public class AlgoCheckImpl implements AlgoCheck {
         return "Need More Information";
 
     }
+
+    String checkIfValidLoop(String s) {
+
+        // Check if the input starts with "for"
+        if (s.startsWith("for")) {
+            // Check if the input contains the required syntax elements
+            if (s.matches("for\\s*\\(.*;.*;.*\\)\\s*\\{.*\\}")) {
+                System.out.println("Valid for loop.");
+            } else {
+                System.out.println("Invalid for loop.");
+            }
+        } else {
+            System.out.println("Not a for loop.");
+        }
+
+        return "Need More Information";
+
+    }
+
 }
