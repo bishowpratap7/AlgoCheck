@@ -46,4 +46,42 @@ public class AlgoCheckImpl implements AlgoCheck {
 
     }
 
+    public boolean isWhileLoop(String code) {
+        // Remove whitespace and comments from the code string
+        code = code.replaceAll("\\s+", "").replaceAll("//.*|/\\*.*?\\*/", "");
+
+        // Search for the "while" keyword followed by a condition in parentheses
+        int index = code.indexOf("while(");
+        if (index == -1) {
+            return false; // Not a while loop
+        }
+
+        // Search for the matching closing brace of the loop block
+        int braceCount = 1;
+        index = code.indexOf('{', index + 1);
+        while (index != -1) {
+            int nextIndex = code.indexOf("{}'", index + 1);
+            if (nextIndex == -1) {
+                return false; // Missing closing brace
+            }
+            if (code.charAt(nextIndex) == '{') {
+                braceCount++;
+            } else if (code.charAt(nextIndex) == '}') {
+                braceCount--;
+                if (braceCount == 0) {
+                    return true; // Found while loop
+                }
+            } else if (code.charAt(nextIndex) == '\'') {
+                nextIndex = code.indexOf('\'', nextIndex + 1);
+                if (nextIndex == -1) {
+                    return false; // Missing closing quote
+                }
+            }
+            index = code.indexOf('{', nextIndex + 1);
+        }
+
+        return false; // Missing loop block
+    }
+
+
 }
