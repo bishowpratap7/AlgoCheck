@@ -1,5 +1,8 @@
 package com.alocheck.algocheck;
 
+
+import org.apache.commons.lang3.StringUtils;
+
 public class AlgoCheckImpl implements AlgoCheck {
     /**
      * @param s
@@ -14,8 +17,12 @@ public class AlgoCheckImpl implements AlgoCheck {
     }
 
     String checkOof1(String s) {
-        return "Need More Information";
-
+        int count = StringUtils.countMatches(s,"for");
+        if(count==1){
+            return "O(n)";
+        }else {
+            return "O(n^"+count+")";
+        }
     }
 
     String checkOofN(String s) {
