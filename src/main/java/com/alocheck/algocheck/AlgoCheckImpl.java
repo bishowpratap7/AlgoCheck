@@ -10,14 +10,18 @@ public class AlgoCheckImpl implements AlgoCheck {
      */
     @Override
     public String checkAlogirithTimeComplexity(String s) {
-        if (!s.contains("for(")) {
+    s= s.replaceAll("\\s", "");
+        if (!s.contains("for(") && !s.contains("do{") && !s.contains("while(")) {
             return "O(1)";
+        }else if(s.contains("for(")|| s.contains("do{") || !s.contains("while(")){
+            return checkOof1(s);
         }
         return "Need More Information";
+
     }
 
     String checkOof1(String s) {
-        int count = StringUtils.countMatches(s,"for");
+        int count = StringUtils.countMatches(s,"for(");
         if(count==1){
             return "O(n)";
         }else {
