@@ -53,11 +53,6 @@ public class AlgoCheckImpl implements AlgoCheck {
         }
     }
 
-    String checkOofNSquare(String s) {
-        return "Need More Information";
-
-    }
-
     String checkIfValidLoop(String s) {
 
         // Check if the input starts with "for"
