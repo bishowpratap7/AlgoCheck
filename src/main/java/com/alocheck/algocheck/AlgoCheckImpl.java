@@ -1,7 +1,12 @@
 package com.alocheck.algocheck;
 
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
+
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AlgoCheckImpl implements AlgoCheck {
     /**
@@ -10,10 +15,29 @@ public class AlgoCheckImpl implements AlgoCheck {
      */
     @Override
     public String checkAlogirithTimeComplexity(String s) {
-    s= s.replaceAll("\\s", "");
-        if (!s.contains("for(") && !s.contains("do{") && !s.contains("while(")) {
+
+        //Remove all whitespaces
+        s = s.replaceAll("\\s", "");
+
+        //Check if it is a valid request.
+        boolean verifyItIsNotAValidControlFlowStatement = !s.contains("for(") && !s.contains("do{")
+                && !s.contains("while(") && !s.contains("if(");
+
+        //Gather if it is an array only initialization
+        String[] checkIfItIsAConstantTime = StringUtils.substringsBetween(s, "[", "]");
+
+        AtomicBoolean isAConstantTime = new AtomicBoolean(false);
+        if (!ArrayUtils.isEmpty(checkIfItIsAConstantTime)) {
+            Arrays.stream(checkIfItIsAConstantTime).forEach(s1 -> isAConstantTime.set(NumberUtils.isCreatable(s1)));
+        }
+
+        if (verifyItIsNotAValidControlFlowStatement && !isAConstantTime.get()) {
+            return "PLEASE CHECK IF IT IS A VALID ALGORITHM REQUEST";
+        }
+
+        if (verifyItIsNotAValidControlFlowStatement && isAConstantTime.get()) {
             return "O(1)";
-        }else if(s.contains("for(")|| s.contains("do{") || !s.contains("while(")){
+        } else if (s.contains("for(") || s.contains("do{") || !s.contains("while(")) {
             return checkOof1(s);
         }
         return "Need More Information";
@@ -21,17 +45,12 @@ public class AlgoCheckImpl implements AlgoCheck {
     }
 
     String checkOof1(String s) {
-        int count = StringUtils.countMatches(s,"for(");
-        if(count==1){
+        int count = StringUtils.countMatches(s, "for(");
+        if (count == 1) {
             return "O(n)";
-        }else {
-            return "O(n^"+count+")";
+        } else {
+            return "O(n^" + count + ")";
         }
-    }
-
-    String checkOofN(String s) {
-        return "Need More Information";
-
     }
 
     String checkOofNSquare(String s) {
