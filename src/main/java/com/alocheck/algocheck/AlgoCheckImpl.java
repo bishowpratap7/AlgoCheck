@@ -23,7 +23,7 @@ public class AlgoCheckImpl implements AlgoCheck {
         boolean verifyItIsNotAValidControlFlowStatement = !s.contains("for(") && !s.contains("do{")
                 && !s.contains("while(") && !s.contains("if(");
 
-        //Gather if it is an array only initialization
+     /*   //Gather if it is an array only initialization
         String[] checkIfItIsAConstantTime = StringUtils.substringsBetween(s, "[", "]");
 
         AtomicBoolean isAConstantTime = new AtomicBoolean(false);
@@ -33,9 +33,9 @@ public class AlgoCheckImpl implements AlgoCheck {
 
         if (verifyItIsNotAValidControlFlowStatement && !isAConstantTime.get()) {
             return "PLEASE CHECK IF IT IS A VALID ALGORITHM REQUEST";
-        }
+        }*/
 
-        if (verifyItIsNotAValidControlFlowStatement && isAConstantTime.get()) {
+        if (verifyItIsNotAValidControlFlowStatement) {
             return "O(1)";
         } else if (s.contains("for(") || s.contains("do{") || !s.contains("while(")) {
             return checkOof1(s);
