@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RESTAPIService {
-  
+
   constructor(private http: HttpClient) { }
 
-  httpOptions = {
+  requestOptions: Object = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
-    })
-  };
-  
-  postBlog(blog: any) {
-    let url = "http://localhost:8080/api/algoCheck";
-    return this.http.post(url, blog, this.httpOptions);
+    }),
+    responseType: 'text'
+  }
+
+  estimateAlgoService(blog: any): Observable<string> {
+    {
+      let url = "http://localhost:8080/api/algoCheck";
+      return this.http.post<string>(url, blog, this.requestOptions);
+    }
   }
 }

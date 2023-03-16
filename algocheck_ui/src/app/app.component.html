@@ -1,25 +1,23 @@
 <form action="" method="POST" name="blogForm">
   <table>
     <tr>
-      <td colspan="2"><h1>Post New Blog</h1></td>
+      <td colspan="2">
+        <h1>Algorithm Time Complexity Estimator</h1>
+      </td>
       <td></td>
     </tr>
     <tr>
-      <td><label>Enter Title</label></td>
-      <td><input [(ngModel)]="title" name="title" placeholder="Enter Blog Title here ...." type="text"></td>
-    </tr>
-    <tr>
-      <td><label>Blog Snippet</label></td>
-      <td><input [(ngModel)]="snippet" name="snippet" placeholder="Enter Blog Snippet here ...." type="text"></td>
-    </tr>
-    <tr>
-      <td><label>Blog Body</label></td>
-      <td><textarea [(ngModel)]="body" name="body" placeholder="Enter Blog Body here ...."></textarea></td>
+      <td><label>Type or Paste your Java Code Here</label></td>
+      <td><textarea [(ngModel)]="body" name="body" placeholder="Type or Paste your Java Code Here.     "></textarea>
+      </td>
     </tr>
     <tr>
       <td align="center" colspan="4">
-        <button (click)="saveBlog()" type="submit" value="Submit">Submit</button>
+        <button (click)="estimateAlgo()" type="submit" value="Submit">Submit</button>
       </td>
     </tr>
+    <br>
+    <br>
+    <label for="name">This Algorithm Complexity seems to be of :   {{name}}</label>
   </table>
 </form>
