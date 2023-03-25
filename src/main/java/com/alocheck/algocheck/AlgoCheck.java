@@ -2,5 +2,5 @@ package com.alocheck.algocheck;
 
 public interface AlgoCheck {
 
-    String checkAlogirithTimeComplexity(String s);
+    String checkAlgorithmicTimeComplexity(String s);
 }

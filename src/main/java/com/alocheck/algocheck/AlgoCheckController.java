@@ -16,7 +16,6 @@ public class AlgoCheckController {
 
     @PostMapping(value = "/api/algoCheck", produces = {"text/plain"})
     String checkForAlogorithmicTimeComplexity(@RequestBody String s) {
-        System.out.println("Triggered...................................");
-        return algoCheck.checkAlogirithTimeComplexity(s);
+        return algoCheck.checkAlgorithmicTimeComplexity(s);
     }
 }

@@ -14,7 +14,7 @@ public class AlgoCheckImpl implements AlgoCheck {
      * @return
      */
     @Override
-    public String checkAlogirithTimeComplexity(String s) {
+    public String checkAlgorithmicTimeComplexity(String s) {
 
         //Remove all whitespaces
         s = s.replaceAll("\\s", "");
