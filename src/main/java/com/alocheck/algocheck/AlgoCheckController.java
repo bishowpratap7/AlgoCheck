@@ -5,6 +5,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The {@code AlgoCheckController} class represents the Controller layer and is in a REST form.
+ * This takes String as a request body.
+ *
+ * @author Bishow Pandey
+ * @since 0.0.1-SNAPSHOT
+ */
 @RestController
 @CrossOrigin
 public class AlgoCheckController {
@@ -15,7 +22,7 @@ public class AlgoCheckController {
     }
 
     @PostMapping(value = "/api/algoCheck", produces = {"text/plain"})
-    String checkForAlogorithmicTimeComplexity(@RequestBody String s) {
+    String checkForAlgorithmicTimeComplexity(@RequestBody String s) {
         return algoCheck.checkAlgorithmicTimeComplexity(s);
     }
 }
