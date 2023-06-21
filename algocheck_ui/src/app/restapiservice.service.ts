@@ -18,6 +18,7 @@ export class RESTAPIService {
 
   estimateAlgoService(blog: any): Observable<string> {
     {
+      //This url needs to go some constant file.
       let url = "http://localhost:8080/api/algoCheck";
       return this.http.post<string>(url, blog, this.requestOptions);
     }
