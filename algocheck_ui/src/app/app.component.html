@@ -1,23 +1,27 @@
-<form action="" method="POST" name="blogForm">
-  <table>
-    <tr>
-      <td colspan="2">
-        <h1>Algorithm Time Complexity Estimator</h1>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><label>Type or Paste your Java Code Here</label></td>
-      <td><textarea [(ngModel)]="body" name="body" placeholder="Type or Paste your Java Code Here.     "></textarea>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" colspan="4">
-        <button (click)="estimateAlgo()" type="submit" value="Submit">Submit</button>
-      </td>
-    </tr>
-    <br>
-    <br>
-    <label for="name">This Algorithm Complexity seems to be of :   {{name}}</label>
-  </table>
-</form>
+<div class="form-container">
+  <div class="form-content">
+    <h1>Algorithm Time Complexity Estimator</h1>
+    <form (ngSubmit)="estimateAlgo()" #blogForm="ngForm">
+      <div class="form-group">
+        <label for="body">Type or Paste your Java Code Here</label>
+        <textarea 
+          id="body"
+          [(ngModel)]="body" 
+          name="body" 
+          placeholder="Type or Paste your Java Code Here."
+          required
+          #bodyField="ngModel">
+        </textarea>
+        <div *ngIf="bodyField.invalid && (bodyField.dirty || bodyField.touched)" class="error-message">
+          <small *ngIf="bodyField.errors?.['required']">Code input is required.</small>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" [disabled]="blogForm.invalid">Submit</button>
+      </div>
+      <div class="result-container">
+        <label>This Algorithm Complexity seems to be of: {{name}}</label>
+      </div>
+    </form>
+  </div>
+</div>
